@@ -34,4 +34,9 @@ const getCoinDataFromApi = () => {
        'x-access-token': apiKey,
     },
   };
+
+  
+fetch(url, options)
+.then((response) => response.json())
+.then((result) => console.log(result));
 };
