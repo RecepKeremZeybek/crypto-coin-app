@@ -23,7 +23,7 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-const getCoinDataFromApi = () => {
+const getCoinDataFromApi = async() => {
   const apiKey = DecryptStringAES(localStorage.getItem("apiKey")) 
 
   const url=`https://api.coinranking.com/v2/coins?search=${input.value}&limit=1`
@@ -36,7 +36,14 @@ const getCoinDataFromApi = () => {
   };
 
   
-fetch(url, options)
-.then((response) => response.json())
-.then((result) => console.log(result));
+// fetch
+  
+//  const response = await fetch(url, options)
+// .then((response) => response.json())
+// .then((result) => console.log(result.data.coins[0]));
+
+const response =await axios(url,options);
+console.log(response)
+
+
 };
