@@ -24,6 +24,14 @@ form.addEventListener("submit", (e) => {
 });
 
 const getCoinDataFromApi = () => {
-  const apiKey = window.localStorage.getItem("apiKey");
-  console.log(apiKey)
+  const apiKey = DecryptStringAES(localStorage.getItem("apiKey")) 
+
+  const url=`https://api.coinranking.com/v2/coins?search=${input.value}&limit=1`
+
+  const options = {
+    headers: {
+      
+       'x-access-token': apiKey,
+    },
+  };
 };
