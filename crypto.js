@@ -72,4 +72,8 @@ createdLi.innerHTML=`
 
 
 coinList.prepend(createdLi)
+
+createdLi.querySelector(".remove-icon").addEventListener("click", ()=>{
+    createdLi.remove()
+})
 };
