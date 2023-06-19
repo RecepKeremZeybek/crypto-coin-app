@@ -48,6 +48,17 @@ const response =await axios(url,options);
 const {price,name,change,iconUrl,symbol}=response.data.data.coins[0];
 
 
+// coin Control
+
+const coinNameSpans=coinList.querySelector("h2 span");
+const filteredArray=[...coinNameSpans].filter(span=>
+    span.innerText==name
+);
+if(filteredArray.length>0){msgSpan.innerText=`You already know the data for ${name}, Please search for another coin 😉`
+return;
+};
+
+
 
 const createdLi=document.createElement("li")
 createdLi.classList.add("coin")
@@ -57,7 +68,7 @@ createdLi.innerHTML=`
     <span>${name}</span>
     <sup>${symbol}</sup>
 </h2>
-<div class="coin-temp">$${Number(price.toFixed(6))}</div>
+<div class="coin-temp">$${Number(price).toFixed(6)}</div>
     <figure>
     <img class="coin-icon" src=${iconUrl}>                
     <figcaption style='color:${change<0?"red":"green"}'>
