@@ -43,7 +43,33 @@ const getCoinDataFromApi = async() => {
 // .then((result) => console.log(result.data.coins[0]));
 
 const response =await axios(url,options);
-console.log(response)
+// console.log(response.data.data.coins[0])
+
+const {price,name,change,iconUrl,symbol}=response.data.data.coins[0];
 
 
+
+const createdLi=document.createElement("li")
+createdLi.classList.add("coin")
+createdLi.innerHTML=`
+
+<h2 class="coin-name" data-name=${name}>
+    <span>${name}</span>
+    <sup>${symbol}</sup>
+</h2>
+<div class="coin-temp">$${Number(price.toFixed(6))}</div>
+    <figure>
+    <img class="coin-icon" src=${iconUrl}>                
+    <figcaption style='color:${change<0?"red":"green"}'>
+        <span><i class="fa-solid fa-chart-line"></i></span>
+        <span>${change}</span>
+    </figcaption>
+    </figure>
+    <span class="remove-icon">
+        <i class="fas fa-window-close" style="color:red"></i>
+    </span>
+`;
+
+
+coinList.append(createdLi)
 };
