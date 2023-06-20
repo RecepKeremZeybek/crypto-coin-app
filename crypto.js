@@ -1,4 +1,3 @@
-// api key coinranking5787f1b20234b3e445601abdfdba9358393fbf304707a9ff
 
 const form = document.querySelector(".top-banner form");
 
