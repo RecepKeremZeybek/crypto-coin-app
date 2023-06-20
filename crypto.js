@@ -50,9 +50,8 @@ const {price,name,change,iconUrl,symbol}=response.data.data.coins[0];
 
 // coin Control
 
-const coinNameSpans=coinList.querySelector("h2 span");
-const filteredArray=[...coinNameSpans].filter(span=>
-    span.innerText==name
+const coinNameSpans=coinList.querySelectorAll("h2 span");
+const filteredArray=[...coinNameSpans].filter((span)=>(span.innerText==name)
 );
 if(filteredArray.length>0){msgSpan.innerText=`You already know the data for ${name}, Please search for another coin 😉`
 return;
